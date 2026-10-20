@@ -1,0 +1,107 @@
+/* Folklore Skies — static site. No web fonts, trackers or cookies. */
+:root{
+  --ink:#ece5d3; --ink-dim:#b8b1a0; --gold:#dfb768; --gold-hi:#f0cf8a;
+  --night:#0d0f15; --night-2:#141821;
+  --glass:rgba(255,255,255,.055); --glass-edge:rgba(255,255,255,.13);
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,"Noto Serif",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{background:var(--night);-webkit-text-size-adjust:100%}
+body{margin:0;color:var(--ink);font:17px/1.6 var(--sans);background:
+  radial-gradient(1200px 600px at 70% -10%,rgba(223,183,104,.08),transparent 60%),
+  linear-gradient(180deg,var(--night-2),var(--night) 40%);min-height:100vh}
+a{color:var(--gold)}a:hover{color:var(--gold-hi)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold-hi);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:.005em;line-height:1.15}
+img{max-width:100%;height:auto;display:block}
+.skip{position:absolute;left:-999px;top:0}.skip:focus{left:1rem;top:1rem;z-index:10;background:var(--night);padding:.5rem 1rem}
+.wrap{max-width:68rem;margin:0 auto;padding:0 1.25rem}
+.glass{background:var(--glass);border:1px solid var(--glass-edge);border-radius:22px;
+  -webkit-backdrop-filter:blur(14px) saturate(1.2);backdrop-filter:blur(14px) saturate(1.2);
+  box-shadow:0 10px 40px rgba(0,0,0,.25)}
+
+/* header bar */
+.bar{position:absolute;inset:0 0 auto 0;z-index:3;display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem}
+.brand{display:flex;align-items:center;gap:.6rem;color:var(--ink);text-decoration:none;font-family:var(--serif);font-size:1.15rem}
+.brand img{width:34px;height:34px;border-radius:8px}
+.bar nav a{color:var(--ink-dim);text-decoration:none;margin-left:1.1rem;font-size:.95rem}
+.bar nav a:hover{color:var(--ink)}
+
+/* hero */
+.hero{position:relative;min-height:min(88vh,50rem);display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
+.hero picture,.hero picture img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:0% 40%;z-index:-2}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:
+  linear-gradient(90deg,rgba(9,11,16,.72) 0%,rgba(9,11,16,.25) 45%,transparent 70%),
+  linear-gradient(0deg,var(--night) 0%,rgba(13,15,21,.3) 28%,transparent 55%)}
+.hero .wrap{width:100%;padding-bottom:clamp(2.5rem,8vh,5rem)}
+.hero-card{max-width:28rem;padding:1.5rem 1.6rem}
+.hero h1{font-size:clamp(2.6rem,6vw,4.4rem);margin:0}
+.tagline{font-family:var(--serif);font-style:italic;color:var(--gold);font-size:clamp(1.2rem,2.4vw,1.5rem);margin:.25rem 0 1rem}
+.lede{margin:0 0 1.4rem;color:var(--ink)}
+
+/* store */
+.store{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1rem}
+.store .badge img{height:52px;width:auto}
+.store .note{color:var(--ink-dim);font-size:.9rem;margin:0}
+.store .android,.store .play{display:none}
+html[data-platform="android"] .store .appstore{display:none}
+html[data-platform="android"] .store .android{display:block}
+html[data-platform="android"][data-play="1"] .store .android{display:none}
+html[data-platform="android"][data-play="1"] .store .play{display:inline-flex}
+.android{padding:.7rem 1rem;border-radius:14px;margin:0}
+.play{align-items:center;gap:.5rem;padding:.75rem 1.2rem;border-radius:12px;background:#000;border:1px solid #a6a6a6;color:#fff;text-decoration:none;font-weight:600}
+
+/* sections */
+section{padding:clamp(3rem,8vw,5.5rem) 0}
+section h2{font-size:clamp(1.8rem,3.6vw,2.5rem);margin:0 0 .6rem}
+.intro{max-width:44rem;color:var(--ink-dim);margin:0 0 2rem}
+.worlds{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1rem;list-style:none;padding:0;margin:0}
+.worlds li{padding:1.3rem 1.4rem}
+.worlds h3{margin:0 0 .35rem;font-size:1.35rem;color:var(--gold)}
+.worlds p{margin:0;color:var(--ink-dim);font-size:.97rem}
+.tag{display:inline-block;margin-left:.4rem;font:600 .7rem/1 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-dim);border:1px solid var(--glass-edge);border-radius:99px;padding:.3rem .5rem;vertical-align:middle}
+
+.shots{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(12.5rem,1fr);gap:1.1rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:.4rem .2rem 1.2rem;margin:0;list-style:none;scrollbar-width:thin}
+.shots li{scroll-snap-align:start}
+.shots figure{margin:0}
+.shots img{border-radius:26px;border:1px solid var(--glass-edge);aspect-ratio:1320/2868;width:100%;background:#1a1e27}
+.shots figcaption{font-family:var(--serif);font-style:italic;color:var(--ink-dim);font-size:.95rem;text-align:center;margin-top:.6rem}
+
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:1rem 2rem;padding:0;margin:0;list-style:none}
+.features li{padding-left:1.1rem;border-left:1px solid rgba(223,183,104,.4);color:var(--ink-dim)}
+.features strong{color:var(--ink);font-weight:600;display:block}
+.cta{text-align:center;padding:2.2rem 1.5rem}
+.cta .store{justify-content:center}
+.cta h2{margin-bottom:.2rem}
+
+/* prose pages */
+.page{max-width:42rem;margin:0 auto;padding:6.5rem 1.25rem 3rem}
+.page h1{font-size:clamp(2rem,5vw,2.7rem);margin:0 0 .4rem}
+.page h2{font-size:1.45rem;margin:2.2rem 0 .5rem}
+.page .meta{color:var(--ink-dim);font-style:italic;margin-top:0}
+.page li{margin:.3rem 0}
+.page.center{text-align:center;padding-top:9rem}
+
+/* footer */
+footer{border-top:1px solid rgba(255,255,255,.08);padding:2rem 0 2.6rem;color:var(--ink-dim);font-size:.9rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:.8rem 2rem;justify-content:space-between;align-items:flex-start}
+footer nav a{color:var(--ink);text-decoration:none;margin-right:1.2rem}
+footer nav a:hover{color:var(--gold)}
+footer p{margin:.2rem 0}
+
+@media (max-width:640px){
+  .bar nav{display:none}
+  .hero{display:block;min-height:0}
+  .hero picture{position:relative;display:block;height:min(64svh,34rem)}
+  .hero picture img{object-position:50% 35%}
+  .hero .wrap{margin-top:-5.5rem;padding-bottom:1rem}
+  .hero::after{background:linear-gradient(0deg,var(--night) 0%,var(--night) 30%,rgba(13,15,21,.4) 52%,transparent 70%)}
+  .hero-card{padding:1.3rem 1.3rem}
+}
+@media (prefers-reduced-motion:no-preference){
+  .hero picture img{animation:drift 40s ease-in-out infinite alternate}
+  @keyframes drift{from{transform:scale(1.04) translateX(0)}to{transform:scale(1.08) translateX(-1.2%)}}
+}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.glass{background:rgba(20,24,33,.82)}}
