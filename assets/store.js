@@ -2,7 +2,7 @@
    without JS the page shows the App Store badge for everyone.
    ┌──────────────────────────────────────────────────────────────────────┐
    │ To launch on Google Play later, set PLAY_STORE_URL below (one line). │
-   │ The App Store ID also lives in index.html (search for APP_STORE_ID).  │
+   │ The App Store ID also lives in index.html (search for 6824357386).  │
    └──────────────────────────────────────────────────────────────────────┘ */
 (function () {
   var PLAY_STORE_URL = ""; // e.g. "https://play.google.com/store/apps/details?id=cool.caveman.folkloreweather"
